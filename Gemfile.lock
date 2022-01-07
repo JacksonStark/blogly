@@ -77,6 +77,8 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     erubi (1.10.0)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -172,6 +174,12 @@ GEM
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.4)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.4-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.4-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.0)
@@ -197,6 +205,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  font-awesome-rails (~> 4.7)
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -205,6 +214,7 @@ DEPENDENCIES
   redis (~> 4.0)
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
