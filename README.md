@@ -1,5 +1,7 @@
 # README
 
+![example workflow](https://github.com/JacksonStark/blogly/actions/workflows/ci.yml/badge.svg)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
