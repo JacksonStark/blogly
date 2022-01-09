@@ -17,39 +17,26 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    env:
+      CI: true
+
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-  tests:
-    name: Tests
     runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: myapp
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports: ["5432:5432"]
+          
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       
-      - name: Setup Ruby and install gems
+      - name: Setup Ruby and Install Gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -59,13 +46,19 @@ jobs:
         with:
           node-version: 16.13.1
           
-      - name: Setup test database
+      - name: Build App
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: myapp
+          PGUSER: postgres
+          PGPASSWORD: postgres
         run: |
           bin/rails db:setup
-          
-      - name: Run tests
-        run: bin/rspec
+
+      - name: Run Tests
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: postgres
+        run: bin/rails spec
