@@ -1,11 +1,12 @@
-# README
+# Welcome to Blogly
 
-![example workflow](https://github.com/JacksonStark/blogly/actions/workflows/ci.yml/badge.svg)
+![Continuous Integration](https://github.com/JacksonStark/blogly/actions/workflows/ci.yml/badge.svg)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Code Coverage](https://codecov.io/gh/JacksonStark/blogly/branch/main/graph/badge.svg?token=KQSP9TV2B6)](https://codecov.io/gh/JacksonStark/blogly)
 
-Things you may want to cover:
+Blogly is a full-stack application built to the robust process and consideration standards of senior development.
+
+Things I will eventually cover:
 
 * Ruby version
 
