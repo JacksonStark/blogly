@@ -12,3 +12,4 @@ require 'faker'
         created_at: Faker::Date.between(from: 300.days.ago, to: Date.today)
     )
 end
+ActiveRecord::Base.connection.reset_pk_sequence!('articles')

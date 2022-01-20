@@ -27,7 +27,7 @@ RSpec.describe "/articles", type: :request do
         end
 
         it "renders an unsuccessful response" do
-            get "/articles/123_invalid_id"
+            get "/articles/invalid_id"
             expect(response).to_not be_successful
             expect(response).to_not have_http_status(:not_found)
             expect(flash[:notice]).to match("Article not found.")
@@ -98,6 +98,7 @@ RSpec.describe "/articles", type: :request do
             it "redirects to the article" do
                 article = create :article_with_all_attributes
                 patch article_url(article), params: { article: new_attributes }
+                article.reload
                 expect(response).to redirect_to(article_url(article))
             end
         end
