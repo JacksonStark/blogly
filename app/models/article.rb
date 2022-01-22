@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
     validates_presence_of :title
+    paginates_per 15
 
     before_create do
         self.slug = self.title.parameterize 

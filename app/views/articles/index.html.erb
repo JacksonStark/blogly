@@ -1,10 +1,10 @@
-<h1 class="text-black font-bold text-4xl my-4">Latest</h1>
-<div class="flex flex-wrap gap-8 justify-center">
+<h1 class="text-black text-2xl my-6">Welcome</h1>
+<div class="flex flex-wrap gap-x-8 justify-center">
     <% @articles.each do |article| %>
         <div class="max-w-sm overflow-hidden bg-white rounded-lg shadow-md bg-gray-800 my-5">
             <img class="object-cover w-full h-64" src="<%= article.image_url %>" alt="Article">
 
-            <div class="p-6">
+            <div class="p-6 h-80 flex flex-col justify-between">
                 <div>
                     <span class="text-xs font-medium text-blue-600 uppercase text-blue-400">Article</span>
                     <a href="<%= article_path(article) %>" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-600 hover:underline"><%= article.title %></a>
@@ -24,3 +24,4 @@
         </div>
     <% end %>
 </div>
+<%= paginate @articles %>
