@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/articles", type: :request do
     let(:valid_attributes) {
-        {title: 'Test title', body: 'Test body', image_url: 'www.test.com/test.jpg'} 
+        {title: 'Test title', description: 'Test description', body: 'Test body', image_url: 'www.test.com/test.jpg'} 
     }
 
     let(:invalid_attributes) {
@@ -84,7 +84,7 @@ RSpec.describe "/articles", type: :request do
     describe "PATCH /update" do
         context "with valid parameters" do
             let(:new_attributes) {
-                {title: 'New test title', body: 'New test body', image_url: 'www.test.com/updated_test.jpg'}
+                {title: 'New test title', description: 'New test description', body: 'New test body', image_url: 'www.test.com/updated_test.jpg'}
             }
 
             it "updates the requested article" do

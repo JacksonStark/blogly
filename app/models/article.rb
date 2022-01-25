@@ -2,16 +2,19 @@ class Article < ApplicationRecord
     validates_presence_of :title
     paginates_per 15
 
-    before_create do
-        self.slug = self.title.parameterize 
-    end
-
-    before_update do
-        self.slug = self.title.parameterize 
-    end
+    before_save :sanitize_body, if: -> { self.body_changed? }
+    before_save :set_slug, if: -> { self.title_changed? }
 
     def to_param
         return nil unless persisted?
         [id, slug].join('-')
+    end
+
+    def set_slug
+        self.slug = self.title.parameterize
+    end
+
+    def sanitize_body
+        self.body = Sanitize.fragment(self.body, Sanitize::Config::RELAXED)
     end
 end
