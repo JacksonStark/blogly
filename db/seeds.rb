@@ -7,6 +7,7 @@ require 'faker'
     Article.create!(
         id: id, 
         title: Faker::Company.catch_phrase,
+        description: Faker::Lorem.paragraph_by_chars(number: 300),
         body: Faker::Lorem.paragraph_by_chars(number: 650),
         image_url: Faker::LoremFlickr.image(size: "500x500", search_terms: ['nature']) + '?random=' + Faker::Number.number(digits: 5).to_s,
         created_at: Faker::Date.between(from: 300.days.ago, to: Date.today)
