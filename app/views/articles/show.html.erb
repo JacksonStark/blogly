@@ -6,7 +6,9 @@
         <h1 class="text-black text-center font-bold text-4xl m-30"><%= @article.title %></h1>
     </div>
 
-    <p class="text-black text-center text-sm mt-2"><%= @article.body %></p>
+    <div class="text-black text-center text-sm">
+        <%= sanitize @article.body %>
+    </div>
 
     <div class="flex justify-around mt-2 text-xs">
         <%= link_to 'Edit this article', edit_article_path(@article), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>

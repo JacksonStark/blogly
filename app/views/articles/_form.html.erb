@@ -1,17 +1,37 @@
 <%= form_with(model: article, class: "contents") do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <% if article.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+            <% article.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="flex flex-col justify-between mb-8 text-sm">
+        <%= form.label :title, "Title", class: "mt-6 mb-1" %>
+        <%= form.text_field :title, class: "block w-full px-4 py-2 mt-2 text-gray-700 border border-gray-200 rounded-md text-sm" %>
+
+        <%= form.label :description, "Description", class: "mt-8 mb-1" %>
+        <%= form.text_area :description, class: "block w-full px-4 py-2 mt-2 text-gray-700 border border-gray-200 rounded-md h-20 text-sm" %>
+
+        <%= form.label :body, "Body", class: "mt-8 mb-1" %>
+        <%= form.text_area :body, class: "tinymce text-sm" %>
+        
+        <%# TODO: fix hackiness %>
+        <script> tinymce.remove() </script>
+        <%= tinymce %>
+
     </div>
-  <% end %>
+    <div class="flex justify-between">
+        <%= form.submit class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+        <%= link_to "Back to articles", articles_path, class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium text-xs" %>
+        <% if (article.persisted?) %>  
+            <%= link_to "Show this article", article, class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium text-xs" %>
+        <% end %>
+    </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>

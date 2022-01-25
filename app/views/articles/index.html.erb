@@ -1,4 +1,4 @@
-<h1 class="text-black text-2xl my-6">Welcome</h1>
+<h1 class="text-black text-2xl my-6 italic">Latest</h1>
 <div class="flex flex-wrap gap-x-8 justify-center">
     <% @articles.each do |article| %>
         <div class="max-w-sm overflow-hidden bg-white rounded-lg shadow-md bg-gray-800 my-5">
@@ -6,9 +6,9 @@
 
             <div class="p-6 h-80 flex flex-col justify-between">
                 <div>
-                    <span class="text-xs font-medium text-blue-600 uppercase text-blue-400">Article</span>
+                    <span class="text-xs font-medium uppercase text-blue-400">Article</span>
                     <a href="<%= article_path(article) %>" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-600 hover:underline"><%= article.title %></a>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><%= truncate(article.body, length: 200) %></p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400"><%= truncate(article.description, length: 200) %></p>
                 </div>
 
                 <div class="mt-4">
