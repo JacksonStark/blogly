@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-    validates_presence_of :title
+    validates :title, presence: true
     paginates_per 15
 
     before_save :sanitize_body, if: -> { self.body_changed? }

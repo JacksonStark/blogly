@@ -81,6 +81,5 @@ gem "font-awesome-rails", "~> 4.7"
 gem 'faker'
 gem "kaminari", "~> 1.2"
 
-gem "tinymce-rails", "~> 5.10"
 gem "sanitize", "~> 6.0"
 gem "aws-sdk-s3", require: false
