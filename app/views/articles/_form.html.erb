@@ -19,12 +19,10 @@
         <%= form.text_area :description, class: "block w-full px-4 py-2 mt-2 text-gray-700 border border-gray-200 rounded-md h-20 text-sm" %>
 
         <%= form.label :body, "Body", class: "mt-8 mb-1" %>
-        <%= form.text_area :body, class: "tinymce text-sm" %>
-        
-        <%# TODO: fix hackiness %>
-        <script> tinymce.remove() </script>
-        <%= tinymce %>
 
+        <div data-controller="tinymce">
+            <%= form.text_area :body, class: "tinymce" %>
+        </div>
     </div>
     <div class="flex justify-between">
         <%= form.submit class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
