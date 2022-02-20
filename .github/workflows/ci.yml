@@ -61,6 +61,8 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
           PGPASSWORD: postgres
+          AWS_S3_BUCKET: blogly
+          AWS_S3_REGION: us-west-2
         run: bin/rails spec
 
       - name: Upload Coverage to Codecov
