@@ -84,3 +84,5 @@ gem "kaminari", "~> 1.2"
 
 gem "sanitize", "~> 6.0"
 gem "aws-sdk-s3", require: false
+
+gem "bcrypt", "~> 3.1"
