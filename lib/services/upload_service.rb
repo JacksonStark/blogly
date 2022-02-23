@@ -10,11 +10,11 @@ module Services
             @filename = filename
         end
 
-        def get_download_url
+        def download_url
             "https://#{ENV['AWS_S3_BUCKET']}.s3.#{ENV['AWS_S3_REGION']}.amazonaws.com/#{@filename}"
         end
         
-        def get_presigned_url
+        def presigned_url
             signer = make_s3_presigner
             presigned_url, headers = signer.presigned_request(:put_object, bucket: ENV['AWS_S3_BUCKET'], key: @filename)
             presigned_url
