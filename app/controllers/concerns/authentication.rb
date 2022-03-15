@@ -3,7 +3,6 @@ module Authentication
     extend ActiveSupport::Concern
 
     included do
-        before_action :current_user # to have access to current_user before each request
         helper_method :current_user # for access in our views
         helper_method :user_signed_in?
     end
@@ -28,10 +27,10 @@ module Authentication
       end
 
     def current_user
-        Current.user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+        Current.user ||= User.find_by(id: session[:current_user_id])
     end
 
     def user_signed_in?
-        Current.user.present?
+        current_user.present?
     end
 end
