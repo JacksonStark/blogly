@@ -1,7 +1,7 @@
 require 'aws-sdk-s3'
 require 'rails_helper'
 
-RSpec.describe "storage service", type: :service do
+RSpec.describe "StorageService", type: :service do
     before :each do
         stubbed_client = Aws::S3::Client.new(stub_responses: true)
         @storage_service = Services::StorageService.new(stubbed_client)

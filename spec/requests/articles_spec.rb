@@ -9,6 +9,11 @@ RSpec.describe "/articles", type: :request do
         {invalid_field: 'Test invalid field', another_invalid_field: 'Test invalid field'}
     }
 
+    before(:all) do
+        valid_user = create :user_with_all_attributes
+        login_user(valid_user)
+    end
+
     describe "GET /index" do
         it "renders a successful response" do
             create :article_with_all_attributes
@@ -37,9 +42,9 @@ RSpec.describe "/articles", type: :request do
 
     describe "GET /new" do
         it "renders a successful response" do
-        get new_article_url
-        expect(response).to be_successful
-        expect(response).to have_http_status(:ok)
+            get new_article_url
+            expect(response).to be_successful
+            expect(response).to have_http_status(:ok)
         end
     end
 

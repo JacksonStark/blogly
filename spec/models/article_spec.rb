@@ -18,13 +18,13 @@ RSpec.describe Article, type: :model do
 
     it "creates slug when article created" do
         article = create :article_with_all_attributes
-        expect(article.slug).to match("test-title")
+        expect(article.slug).to match(article.title.parameterize)
     end
 
     it "updates slug when title updated" do
         article = create :article_with_all_attributes
         article.update(title: 'Updated test title')
-        expect(article.slug).to match("updated-test-title")
+        expect(article.slug).to match(article.title.parameterize)
     end
 
     it 'joins id with slug as to_param' do

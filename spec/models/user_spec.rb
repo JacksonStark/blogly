@@ -19,6 +19,7 @@ RSpec.describe User, type: :model do
     it "is invalid with non-unique email" do
         user1 = create :user_with_all_attributes
         user2 = build :user_with_all_attributes
+        user2.email = user1.email
         expect(user2).to_not be_valid
     end
 
