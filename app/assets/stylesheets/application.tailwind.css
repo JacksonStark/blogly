@@ -6,3 +6,31 @@ html,
 body {
   height: 100%;
 }
+
+.btn {
+    background-color: ghostwhite;
+    border-radius: 0.5rem;
+    color: black;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+}
+
+.btn--gray {
+    background-color: #64758B;
+    color: white;
+    padding: 0.3rem 0.5rem;
+}
+
+.btn--blue {
+    background-color: #2563EB;
+    color: white;
+}
+
+.text-field {
+
+}
+
+.display-text {
+
+}

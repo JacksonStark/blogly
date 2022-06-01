@@ -17,12 +17,14 @@
             <div class="px-4 py-3 bg-gray-800 text-white font-bold text-2xl text-center">
                 <a href="<%= articles_path %>"><i class="fa fa-pagelines pr-2.5"></i>blogly</a>
             </div>
-            <div class="absolute right-3 top-3">
+            <div class="absolute right-3 top-3.5 text-white">
                 <% if current_user %>
-                    <%= button_to 'Logout', logout_path, method: :delete, name: 'logout', class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+                    <%= link_to "New Article", new_article_path, class: "btn btn--blue" %>
+                    <%= button_to 'Logout', logout_path, method: :delete, name: 'logout', class: "btn btn--gray ml-3", form_class: "inline-block" %>
+                    <a href="<%= profile_path(current_user.profile) %>"><i class="ml-2 fa fa-user scale-125 py-1.5 px-2 cursor-pointer text-xs"></i></a> 
                 <% else %>
-                    <%= link_to 'Login', login_path, name: 'login', class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
-                    <%= link_to 'Register', register_path, class: "ml-2 rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+                    <%= link_to 'Login', login_path, name: 'login', class: "btn btn--gray" %>
+                    <%= link_to 'Register', register_path, class: "btn btn--gray ml-2" %>
                 <% end %>
             </div>
         </header>

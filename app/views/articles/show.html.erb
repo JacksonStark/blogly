@@ -3,19 +3,19 @@
         <% if notice.present? %>
         <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
         <% end %>
-        <h1 class="text-black text-center font-bold text-4xl m-30"><%= @article.title %></h1>
+        <h1 class="text-center font-bold text-3xl m-30"><%= @article.title %></h1>
     </div>
 
     <div class="text-black text-center text-sm">
         <%= sanitize @article.body %>
     </div>
 
-    <div class="flex justify-around mt-2 text-xs">
+    <div class="flex justify-around mt-2">
         <% if current_user %>
-            <%= link_to 'Edit this article', edit_article_path(@article), class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-            <%= button_to 'Destroy this article', article_path(@article), method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+            <%= link_to 'Edit this article', edit_article_path(@article), class: "btn" %>
+            <%= button_to 'Destroy this article', article_path(@article), method: :delete, class: "btn" %>
         <% end %>
         
-        <%= link_to 'Back to articles', articles_path, class: "rounded-lg py-3 px-5 bg-gray-100 = font-medium" %>
+        <%= link_to 'Back to articles', articles_path, class: "btn" %>
     </div>
 </div>

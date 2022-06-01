@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
         if @user&.authenticate(params[:user][:password])
             login @user
             redirect_to root_path, notice: "Signed in."
+            # TODO: redirect_to new_profile_url if: !@user.profile
         else
             flash.now[:alert] = "Incorrect email or password."
             render :new, status: :unprocessable_entity

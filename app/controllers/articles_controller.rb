@@ -40,14 +40,12 @@ class ArticlesController < ApplicationController
     end
 
     private
-        # Callback for common setup across actions.
         def set_article
             @article ||= Article.find(params[:id])
         rescue ActiveRecord::RecordNotFound
             redirect_to articles_url, notice: "Article not found."
         end
 
-        # Only allow a list of trusted parameters through.
         def article_params
             params.require(:article).permit(
                 :title,

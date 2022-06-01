@@ -15,10 +15,10 @@
         </div>
     </div>
     <div class="flex justify-between">
-        <%= form.submit class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
-        <%= link_to "Back to articles", articles_path, class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium text-xs" %>
-        <% if (article.persisted?) %>  
-            <%= link_to "Show this article", article, class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium text-xs" %>
+        <%= form.submit class: "btn btn--blue" %>
+        <%= link_to "Back to articles", articles_path, class: "btn ml-2" %>
+        <% if article.persisted? %>
+            <%= link_to "Show this article", article, class: "btn ml-2" %>
         <% end %>
     </div>
 
