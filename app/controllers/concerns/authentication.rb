@@ -24,7 +24,7 @@ module Authentication
     def authenticate_user!
         # useful on routes an unauthenticated user should not be able to access, such as the articles#create
         redirect_to login_path, alert: "You need to login to access that page." unless user_signed_in?
-      end
+    end
 
     def current_user
         Current.user ||= User.find_by(id: session[:current_user_id])
