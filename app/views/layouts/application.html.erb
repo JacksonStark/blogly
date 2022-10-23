@@ -17,12 +17,20 @@
             <div class="px-4 py-3 bg-gray-800 text-white font-bold text-2xl text-center">
                 <a href="<%= articles_path %>"><i class="fa fa-pagelines pr-2.5"></i>blogly</a>
             </div>
-            <div class="absolute right-3 top-3">
+            <div class="absolute right-3 top-3.5 text-white flex gap-4">
                 <% if current_user %>
-                    <%= button_to 'Logout', logout_path, method: :delete, name: 'logout', class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+                    <%= link_to "New Article", new_article_path, class: "btn btn--blue" %>
+                    <%= link_to 'Logout', logout_path, method: :delete, name: 'logout', class: "btn btn--gray" %>
+                    <a href="<%= profile_path(current_user.profile) %>">
+                        <% if current_user.profile.image_url %>
+                            <%= image_tag "#{current_user.profile.image_url}", class: "rounded-full h-8 w-8" %>
+                        <% else %>
+                            <i class="fa fa-user scale-125 py-1.5 px-2 cursor-pointer text-xs"></i>
+                        <% end %>
+                    </a> 
                 <% else %>
-                    <%= link_to 'Login', login_path, name: 'login', class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
-                    <%= link_to 'Register', register_path, class: "ml-2 rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+                    <%= link_to 'Login', login_path, name: 'login', class: "btn btn--gray" %>
+                    <%= link_to 'Register', register_path, class: "btn btn--gray" %>
                 <% end %>
             </div>
         </header>

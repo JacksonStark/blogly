@@ -28,7 +28,7 @@ RSpec.describe "Users", type: :request do
 
             it "redirects to articles#index" do
                 post register_url, params: { user: valid_attributes }
-                expect(response).to redirect_to(root_path)
+                expect(response).to redirect_to(login_path)
             end
         end
 

@@ -28,4 +28,9 @@ RSpec.describe User, type: :model do
         expect(user.email).to eq user.email.downcase
     end
 
+    it "creates an associated profile upon creation" do
+        user = create :user_with_all_attributes
+        user.profile
+        expect(user.profile).to be_present
+    end
 end

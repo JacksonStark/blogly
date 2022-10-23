@@ -21,6 +21,6 @@ FactoryBot.define do
             title { Faker::Book.title }
             body { "<script></script>" }
         end
-
+        
     end
 end

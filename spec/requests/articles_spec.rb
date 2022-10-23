@@ -16,7 +16,6 @@ RSpec.describe "/articles", type: :request do
 
     describe "GET /index" do
         it "renders a successful response" do
-            create :article_with_all_attributes
             get articles_url
             expect(response).to be_successful
             expect(response).to have_http_status(:ok)
@@ -89,7 +88,7 @@ RSpec.describe "/articles", type: :request do
     describe "PATCH /update" do
         context "with valid parameters" do
             let(:new_attributes) {
-                {title: 'New test title', description: 'New test description', body: 'New test body', image_url: 'www.test.com/updated_test.jpg'}
+                {title: Faker::Book.title, description: Faker::Restaurant.description, body: Faker::Lorem.paragraph, image_url: Faker::LoremFlickr.image}
             }
 
             it "updates the requested article" do
