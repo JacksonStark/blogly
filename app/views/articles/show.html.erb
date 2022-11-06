@@ -1,11 +1,4 @@
 <div class="flex flex-col justify-around h-full p-2">
-    <div>
-        <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-        <% end %>
-        <h1 class="text-center font-bold text-3xl m-30"><%= @article.title %></h1>
-    </div>
-
     <div class="text-black text-center text-sm">
         <%= sanitize @article.body %>
     </div>
