@@ -1,8 +1,6 @@
 <div class="flex flex-col justify-around h-full p-2">
-    <div class="text-black text-center text-sm">
-        <%= sanitize @article.body %>
-    </div>
-
+    <h1 class="text-center font-bold text-3xl m-30"><%= @article.title %></h1>
+    <div class="text-black text-center text-sm"><%= sanitize @article.body %></div>
     <div class="flex justify-around mt-2">
         <% if current_user %>
             <%= link_to 'Edit this article', edit_article_path(@article), class: "btn" %>
