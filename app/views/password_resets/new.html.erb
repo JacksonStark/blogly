@@ -1,0 +1,13 @@
+<div class="mx-auto md:w-2/3 w-full">
+    <h1 class="font-bold text-4xl">Forgot your password?</h1>
+
+    <%= form_with(url: password_reset_path) do |form| %>
+        <div class="flex flex-col justify-between mb-8 text-sm">
+            <%= form.label :email, class: "mt-8 mb-1" %>
+            <%= form.email_field :email, required: true, class: "block w-full px-4 py-2 mt-2 text-gray-700 border border-gray-200 rounded-md h-10 text-sm" %>
+        </div>
+
+        <%= form.submit "Reset Password", class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
+    <% end %>
+</div>
+

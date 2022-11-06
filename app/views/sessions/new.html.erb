@@ -8,6 +8,9 @@
 
             <%= form.label :password, class: "mt-8 mb-1" %>
             <%= form.password_field :password, required: true, class: "block w-full px-4 py-2 mt-2 text-gray-700 border border-gray-200 rounded-md h-10 text-sm" %>
+
+            <%= link_to "Forgot your password?", password_reset_path, class: "mt-4 underline" %>
+
         </div>
         <%= form.submit "Sign In", class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium cursor-pointer text-xs" %>
     <% end %>
