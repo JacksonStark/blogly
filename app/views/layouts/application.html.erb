@@ -20,20 +20,25 @@
             <div class="absolute right-3 top-3.5 text-white flex gap-4">
                 <% if current_user %>
                     <%= link_to "New Article", new_article_path, class: "btn btn--blue" %>
-                    <%= link_to 'Logout', logout_path, method: :delete, name: 'logout', class: "btn btn--gray" %>
+                    <%= button_to 'Logout', logout_path, method: :delete, name: 'logout', class: "btn btn--gray"%>
                     <a href="<%= profile_path(current_user.profile) %>">
                         <% if current_user.profile.image_url %>
                             <%= image_tag "#{current_user.profile.image_url}", class: "rounded-full h-8 w-8" %>
                         <% else %>
                             <i class="fa fa-user scale-125 py-1.5 px-2 cursor-pointer text-xs"></i>
                         <% end %>
-                    </a> 
+                    </a>
                 <% else %>
                     <%= link_to 'Login', login_path, name: 'login', class: "btn btn--gray" %>
-                    <%= link_to 'Register', register_path, class: "btn btn--gray" %>
+                    <%= link_to 'Register', register_path, class: "btn btn--blue" %>
                 <% end %>
             </div>
         </header>
+        <div class="flex justify-center mt-6">
+            <% if notice.present? %>
+                <p class="py-1 px-2 bg-gray-50 mt-6 text-gray-600 font-medium rounded-lg inline-block text-sm" id="notice"><%= notice %></p>
+            <% end %>
+        </div>
         <section class="flex-1 flex flex-col justify-center items-center p-8">
             <%= yield %>
         </section>
