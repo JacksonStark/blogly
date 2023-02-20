@@ -55,13 +55,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem "pry-byebug"
+  gem "pry-rails"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "pry-byebug"
-  gem "pry-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -74,8 +74,6 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
   gem 'codecov'
-  gem "pry-byebug"
-  gem "pry-rails"
 end
 
 gem "tailwindcss-rails", "~> 2.0"
