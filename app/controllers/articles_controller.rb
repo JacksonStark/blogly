@@ -41,8 +41,10 @@ class ArticlesController < ApplicationController
 
     def transition
         transition = params[:transition]
+        is_valid_transition = @article.get_transitions.include?(transition)
 
-        if @article.send(transition)
+        if is_valid_transition
+            @article.send(transition)
             new_state = @article.state.split('_').map(&:capitalize).join(' ')
             redirect_to article_url(@article), notice: "Article is now #{new_state}."
         else

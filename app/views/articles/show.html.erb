@@ -10,7 +10,7 @@
         <%= link_to 'Back to articles', articles_path, class: "btn" %>
 
         <% @article.get_transitions.each do |transition| %>
-            <%= button_to transition.name.to_s.capitalize, transition_article_path(@article, transition: transition), method: :put, class: "btn btn--blue" %>
+            <%= button_to transition.capitalize, transition_article_path(@article, transition: transition), method: :put, class: "btn btn--blue" %>
         <% end %>
     </div>
 </div>

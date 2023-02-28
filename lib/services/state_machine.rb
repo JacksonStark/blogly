@@ -64,7 +64,7 @@ module Services
 
             define_method(:get_transitions) do
                 # Get all events containing current state in their transition "from"
-                self.class.events.select { |e| e.transition.from.include?(self.state.to_sym) }.map { |e| e.name }
+                self.class.events.select { |e| e.transition.from.include?(self.state.to_sym) }.map { |e| e.name.to_s }
             end
 
             define_method(:validate_transition) do |to_state|

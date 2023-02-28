@@ -117,6 +117,26 @@ RSpec.describe "/articles", type: :request do
         end
     end
 
+    describe "PUT /transition" do
+        context "with valid parameters" do
+            it "updates the requested article" do
+                article = create :article_with_all_attributes
+                put transition_article_url(article), params: { transition: 'publish' }
+                article.reload
+                expect(article[:state]).to eq('published')
+            end
+        end
+        
+        context "with invalid parameters" do
+            it "renders an unsuccessful response" do
+                article = create :article_with_all_attributes
+                put transition_article_url(article), params: { transition: 'invalid_transition' }
+                expect(response).to_not be_successful
+                expect(response).to have_http_status(:unprocessable_entity)
+            end
+        end
+    end
+
   describe "DELETE /destroy" do
     it "destroys the requested article" do
         article = create :article_with_all_attributes
