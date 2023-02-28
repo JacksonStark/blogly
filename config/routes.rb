@@ -3,22 +3,27 @@ Rails.application.routes.draw do
     root 'articles#index'
     
     resources :profiles
-    resources :articles
+    resources :articles do
+        member do
+            put :transition, to: 'articles#transition'
+        end
+    end
     resources :users, except: [:new]
     resources :profiles, only: [:show, :edit, :update]
     
-    get 'register', to: 'users#new'
-    post 'register', to: 'users#create'
+    get :register, to: 'users#new'
+    post :register, to: 'users#create'
 
-    get 'login', to: 'sessions#new'
-    post 'login', to: 'sessions#create'
-    delete 'logout', to: 'sessions#destroy'
+    get :login, to: 'sessions#new'
+    post :login, to: 'sessions#create'
+    delete :logout, to: 'sessions#destroy'
 
-    get 'password/reset', to: 'password_resets#new'
-    post 'password/reset', to: 'password_resets#create'
-
-    get 'password/reset/edit', to: 'password_resets#edit'
-    patch 'password/reset/edit', to: 'password_resets#update'
+    scope :password, as: :password do 
+        get :reset, to: 'password_resets#new'
+        post :reset, to: 'password_resets#create'
+        get 'reset/edit', to: 'password_resets#edit'
+        patch 'reset/edit', to: 'password_resets#update'
+    end
     
-    get '/uploads/presigned_url', to: 'uploads#presigned_url'
+    get 'uploads/presigned_url', to: 'uploads#presigned_url'
 end

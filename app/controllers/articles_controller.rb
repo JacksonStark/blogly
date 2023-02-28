@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :authenticate_user!, except: %i[ index show ]
-    before_action :set_article, only: %i[ show edit update destroy ]
+    before_action :set_article, only: %i[ show edit update destroy transition ]
 
     def index
         @articles = Article.order(created_at: :desc).page params[:page]
@@ -37,6 +37,19 @@ class ArticlesController < ApplicationController
     def destroy
         @article.destroy
         redirect_to articles_url, notice: "Article was successfully destroyed."
+    end
+
+    def transition
+        transition = params[:transition]
+        is_valid_transition = @article.get_transitions.include?(transition)
+
+        if is_valid_transition
+            @article.send(transition)
+            new_state = @article.state.split('_').map(&:capitalize).join(' ')
+            redirect_to article_url(@article), notice: "Article is now #{new_state}."
+        else
+            render :show, status: :unprocessable_entity
+        end
     end
 
     private
